@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+{% block head %}
+<title>Profile</title>
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+      <div class="navbar-brand" href="main/index.html"><div style="font-family: 'Times New Roman', Times, serif;" ><h1 class="display-1">Profile</h1></div>
+    </div>
+    </div>
+  </nav>
+
+<div class="container-fluid padding">
+  <div class="row padding">
+     <div class="col-md-12 col-lg-6">
+       <div><div style ="font-weight: 600;padding-left: 1cm;font-size: xx-large;">Name: {{ profile.name }} </div></div>
+       <div style="padding-left: 1cm;font-size: xx-large;font-weight: 600;">Email: {{ profile.email }}</div>  
+       <div style="padding-left: 1cm;font-size: xx-large;font-weight: 600;">Number: {{ profile.num }}</div>  
+      </div>
+      <div class="col-lg-6">
+        {% load static %}
+         <img src="{% static "main/prof.png" %}" alt="My image">
+      </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

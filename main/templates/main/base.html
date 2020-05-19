@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        {% endblock %}
+         {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">  
+        <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+         
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+         <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+         </head>    
+    <body>
+        {% block body %}
+        {% endblock %}
+        <div class="container-fluid padding" style="padding-top: 2cm;">
+            <div class="row text-center padding">
+              <div class="col-12">
+                <h2>Connect</h2>
+              </div>
+              <div class="col-12 social padding">
+                <a href="/"><i class="fab fa-facebook"></i></a>
+                <a href="/"><i class="fab fa-twitter"></i></a>
+                <a href="/"><i class="fab fa-google-plus-g"></i></a>
+                <a href="/"><i class="fab fa-instagram"></i></a>
+                <a href="/"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid padding">
+            <div class="row text-center">
+              <div class="col-md-4">       
+                <hr class="light">
+                <p>454555-454-5454</p>
+                <p>somthing@gmail.com</p>
+                <p>234 Street</p>
+                <p>City,State</p>
+              </div>
+              <div class="col-md-4">
+                <hr class="light">
+                <h5>Hours</h5>
+                <hr class="light">
+                <p>Mon: 7am-5pm</p>
+                <p>Sat :7am - 5pm</p>
+                <p>Sun: closed</p>
+              </div>
+              <div class="col-md-4">
+                <hr class="light">
+                <h5>Hours</h5>
+                <hr class="light">
+                <p>City, Street</p>
+                <p>City, Street</p>
+                <p>City, Street</p>
+                <p>City, Street</p>
+              </div>
+              <div class="col-12">
+                <hr class="light">
+                <h5>&copy;theRECHARGEHUB.com</h5>
+              </div>
+            </div>
+          </div>
+    </body>    
+    
+</html>

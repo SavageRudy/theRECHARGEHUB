@@ -1,0 +1,135 @@
+{% extends "main/base.html" %}
+{% block head %}
+<title>Info</title>
+<style>
+    .button {
+      border-radius: 4px;
+      background-color: rgb(199, 199, 199);
+      border: none;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 200px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+     
+    }  
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }  
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+    .button:hover span {
+      padding-right: 25px;
+    }
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
+    container {
+  position: relative;
+}
+.text-block {
+  position: absolute;
+  bottom: -155px;
+  right: 4px;
+  color: rgb(0, 0, 0);
+  padding-left: 20px;
+  padding-right: 40px;
+  font-weight: 700;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+    </style>
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+    <div class="navbar-brand" ><div style="font-weight: bolder;text-align: center;"><h1 class="display-3">{{ result.name }}</h1></div></div>
+    </div>
+</nav> 
+
+<div class="container-fluid padding">
+    {% load static %}
+    <img src="{% static "main/browse.jpg" %}" alt="My image" style="width:100%; opacity: 0.9;">
+    <div class="text-block" >
+        {% if db  == "Combo" %}            
+            <div style="padding-left: 4cm;font-size: larger;padding-top: 1.5cm;">
+                Available Data : {{ result.net }}
+            </div>
+            <div style="padding-left: 4cm;font-size: larger;">    
+                Available Talktime : {{ result.talk }}
+            </div>    
+            <div style="padding-left: 4cm;font-size: larger;">    
+            Validity : {{ result.vald }} days
+            </div>
+            <div style="padding-left: 4cm;font-size: larger;"">    
+            Price : Rs.{{ result.price }} 
+            </div>
+            <div style="padding-left: 4cm;font-size: larger;"">    
+                More info  ---   {{ result.text }} 
+            </div>
+            <div style="text-align: center;padding-top: 5cm;"><form method='POST' action="/checkout">
+                {% csrf_token %}
+                <input type="hidden" name="pack_id" value="{{result.pk}}">
+                <input type="hidden" name="db_name" value="Combo">
+                <button type="submit" class="button"><span>Proceed to payment</span></button>
+            </form>
+            </div>
+{% endif %}
+{% if db  == "Internet" %}
+            <div style="padding-left: 4cm;font-size: larger;padding-top: 1.5cm;">
+                Available Data : {{ result.net }}
+            </div>   
+            <div style="padding-left: 4cm;font-size: larger;">    
+            Validity : {{ result.vald }} days
+            </div>
+            <div style="padding-left: 4cm;font-size: larger;"">    
+            Price : Rs.{{ result.price }} 
+            </div>
+            <div style="padding-left: 4cm;font-size: larger;"">    
+                More info  ---   {{ result.text }} 
+            </div>
+            <div style="text-align: center;padding-top: 5cm;"><form method='POST' action="/checkout">
+                {% csrf_token %}
+                <input type="hidden" name="pack_id" value="{{result.pk}}">
+                <input type="hidden" name="db_name" value="Internet">
+                <button type="submit" class="button"><span>Proceed to payment</span></button>
+            </form>
+            </div>
+{% endif %}
+{% if db  == "Talktime" %}
+            <div style="padding-left: 4cm;font-size: larger;">    
+                Available Talktime : {{ result.talk }}
+            </div>    
+            <div style="padding-left: 4cm;font-size: larger;">    
+            Validity : {{ result.vald }} days
+            </div>
+            <div style="padding-left: 4cm;font-size: larger;"">    
+            Price : Rs.{{ result.price }} 
+            </div>
+            <div style="padding-left: 4cm;font-size: larger;"">    
+                More info  ---   {{ result.text }} 
+            </div>
+            <div style="text-align: center; padding-top: 5cm;"><form method='POST' action="/checkout">
+                {% csrf_token %}
+                <input type="hidden" name="pack_id" value="{{result.pk}}">
+                <input type="hidden" name="db_name" value="Talktime">
+                <button type="submit" class="button"><span>Proceed to payment</span></button>
+            </form>
+            </div>
+{% endif %}
+    </div> 
+{% endblock %}

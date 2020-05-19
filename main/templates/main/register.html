@@ -1,0 +1,82 @@
+{% extends "main/base.html" %}
+
+{% block head %}<title>REGISTER</title>
+<style>
+  .button {
+    border-radius: 4px;
+    background-color: rgb(73, 248, 4);
+    border: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .button:hover span {
+    padding-right: 25px;
+  }
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+   container {
+  position: relative;
+}
+.text-block {
+  position: absolute;
+  bottom: -76px;
+  right: 168px;
+  color: rgb(0, 0, 0);
+  padding-left: 20px;
+  padding-right: 40px;
+  font-weight: 700;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+</style>
+{% endblock %}
+
+
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+   <div class="container-fluid">
+     <div class="navbar-brand" href="main/index.html"><div style="font-weight: bolder;padding-left: 3cm;"><h1 class="display-4">Register</h1></div>
+     </div>
+   </div>
+ </nav>
+
+ <div class="container-fluid padding" style="padding-top: 1cm;padding-left: 3.8cm;">
+  {% load static %}
+  <img src="{% static "main/white.jpg" %}" alt="My image" style="width:100%; opacity: 0.9;">
+  <dia class="text-block">  
+    <div style="padding-top: 1cm;padding-left: 3cm;">
+      <br>
+      <form method="POST">
+    {% csrf_token %}
+        {{form.as_ul}}
+         {{ profile_form.as_ul }} 
+        
+     <div style="padding-left: 10cm; padding-top: 2cm;"><button type="submit" class="button"><span>Register</span></button></div>
+      </form>
+     </div>
+        
+  </dia>      
+</div>
+{% endblock %}

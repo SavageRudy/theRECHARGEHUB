@@ -1,0 +1,133 @@
+{% extends "main/base.html" %}
+
+{% block head %}
+<title>HOMEPAGE</title>
+<style>
+  .button {
+    border-radius: 4px;
+    background-color: rgb(250, 101, 46);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .button:hover span {
+    padding-right: 25px;
+  }
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  </style>
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+    <div class="navbar-brand" href="main/index.html">
+      <div style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;"><h1 class="display-1">
+        {% load static %}
+      <img src="{% static "main/icon.png" %}" alt="My image">theRECHAGEHUB</h1></div>
+    </div>
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Log In</a></li>
+        {% endif %}
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>  
+</nav>
+<div id="slides" class="carousel slide" data-ride="carousel">
+
+  <ul class="carousel-indicators">
+    <li data-target="#slides" data-slide-to="0" class="active"></li>
+    <li data-target="#slides" data-slide-to="1"></li>
+    <li data-target="#slides" data-slide-to="2"></li>
+  </ul>
+  <div class="carousel-inner">
+    <div class="carousel-item ">
+      {% load static %}
+      <img src="{% static "main/img2.jpg" %}">
+      <div class="carousel-caption">
+        <h1 class="display-2" style="color: black;">Recharge Anywhere</h1>
+        <h3 style="color: black;">On the Go</h3>
+      </div>
+    </div>
+    <div class="carousel-item active ">
+      {% load static %}
+      <img src="{% static "main/img1.jpg" %}">     
+    </div>
+    <div class="carousel-item ">
+      {% load static %}
+      <img src="{% static "main/img3.jpg" %}">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid padding" style="padding-top: 3cm;">
+  <div class="row text-center padding">   
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <a href="/combo"><button class="button"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+        <span><h2>Combo Packs</h2></span>
+    </button></a>
+    </div> 
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <a href="/internet"><button class="button"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+       <span><h2>Internet Packs</h2></span>
+      </button></a>
+    </div> 
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <a href="/talk"><button class="button"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+      <span><h2>Talktime Packs</h2></span>
+    </button></a>
+    </div> 
+  </div>
+  <hr class="my-4">
+</div>
+<div class="container-fluid padding" style="padding-left: 10.5cm;">
+  {% load static %}
+      <img src="{% static "main/Capture.png" %}"> 
+</div>  
+
+   
+{% endblock %}
